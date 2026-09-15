@@ -1,0 +1,6 @@
+# Replace the hostname when installing this snippet on the production proxy.
+your-domain.example {
+	encode zstd gzip
+	header Alt-Svc "clear"
+	reverse_proxy 127.0.0.1:8040
+}
