@@ -2,6 +2,7 @@ FROM node:20-alpine AS dependencies
 
 WORKDIR /app
 COPY package.json package-lock.json ./
+COPY tools/minimatch-compat ./tools/minimatch-compat
 RUN npm ci
 
 FROM node:20-alpine AS builder
