@@ -16,3 +16,13 @@ Normal build/check passed (receipt `vvibe-build`, exit 0, log SHA-256 `2accfc200
 
 
 After verification remove regenerated dependency environments, caches and build output again. Keep authored source, assets, dependency pins and Git metadata.
+
+## CI security repair verification (2026-11-03)
+
+Integrated the previously reviewed dependency repair from PR #11. A fresh
+`npm ci` from the committed lockfile passed on Node 22.23.3/npm 10.9.9, followed
+by lint, TypeScript, all 36 tests, `npm audit --audit-level=low` (zero findings),
+and the normal production build. The private matcher adapter under
+`tools/minimatch-compat` is an indispensable source input; the Docker dependency
+stage copies it before installation. No additional binary recovery input is needed.
+This verifies the source build and CI boundaries; production was not deployed.

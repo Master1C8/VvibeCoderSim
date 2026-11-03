@@ -21,7 +21,7 @@ jobs:
       - run: npm run lint
       - run: ./node_modules/.bin/tsc --noEmit --incremental false
       - run: npm test
-      - run: npm audit --omit=dev --audit-level=high
+      - run: npm audit --audit-level=low
       - run: npm run build
         env:
           NEXT_PUBLIC_SITE_URL: https://example.com
